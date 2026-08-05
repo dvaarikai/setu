@@ -1,6 +1,9 @@
 import WebSocket from "ws";
 import type { EngineStart, VoiceEngine } from "./types.js";
 
+/** Kept in step with package.json — stamped on every call for attribution. */
+export const SETU_VERSION = "0.1.0";
+
 /**
  * The Dvaarik voice engine.
  *
@@ -58,7 +61,15 @@ export class DvaarikEngine implements VoiceEngine {
         // rate back, so no resampling happens between here and the carrier.
         sample_rate_in: s.sampleRate,
         sample_rate_out: s.sampleRate,
-        metadata: s.metadata,
+        metadata: {
+          // Stamped so we can tell how much traffic arrives through Setu
+          // rather than a hand-written bridge. It rides in the call's own
+          // metadata, which is returned to you unchanged on GET /v1/calls —
+          // nothing extra is collected and nothing is sent anywhere else.
+          source: "setu",
+          setu_version: SETU_VERSION,
+          ...s.metadata,
+        },
       }),
     });
 
