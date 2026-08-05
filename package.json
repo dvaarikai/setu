@@ -1,0 +1,40 @@
+{
+  "name": "@dvaarik/setu",
+  "version": "0.1.0",
+  "description": "Bridge any telephony provider's media stream to an AI voice agent. Twilio, Plivo, Exotel, Vonage, Telnyx, Jambonz and raw SIP.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./providers": "./dist/providers/index.js"
+  },
+  "bin": {
+    "setu": "./dist/cli.js"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/cli.js",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "keywords": [
+    "voice-ai", "telephony", "twilio", "plivo", "exotel", "vonage", "telnyx",
+    "jambonz", "sip", "media-streams", "websocket", "voice-agent", "ivr",
+    "speech-to-speech", "india"
+  ],
+  "repository": { "type": "git", "url": "https://github.com/dvaarikai/setu.git" },
+  "homepage": "https://developers.dvaarik.com",
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/ws": "^8.5.13",
+    "typescript": "^5.7.2"
+  }
+}
