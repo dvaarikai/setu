@@ -25,6 +25,7 @@ export {
   twilioAdapter,
   plivoAdapter,
   exotelAdapter,
+  frejunAdapter,
   vonageAdapter,
   telnyxAdapter,
   jambonzAdapter,

@@ -39,6 +39,7 @@ Setu is that week, already done, MIT licensed.
 | **SignalWire** | `/signalwire` | Twilio-compatible | Documented protocol |
 | **Plivo** | `/plivo` | JSON, base64, L16 or μ-law | Documented protocol |
 | **Exotel** 🇮🇳 | `/exotel` | JSON snake_case, base64 L16 8 kHz | **Production-tested** |
+| **FreJun / Teler** 🇮🇳 | `/frejun` | JSON, base64 PCM16 8 kHz | **Production-tested** |
 | **Vonage** | `/vonage` | Raw binary PCM16 | Documented protocol |
 | **Telnyx** | `/telnyx` | JSON, base64 RTP | Documented protocol |
 | **jambonz** | `/jambonz` | Binary PCM16 | Documented protocol |
@@ -125,6 +126,22 @@ skips a companding round trip on every frame:
 
 **Exotel** — add a Voicebot applet to your flow and point it at
 `wss://your-host/exotel`.
+
+**FreJun / Teler** — point your Teler app's stream URL at
+`wss://your-host/frejun` (`/teler` works too). This adapter carries three
+behaviours we learned the expensive way on live calls:
+
+- it sends **8 kHz** — Teler's play-out is fixed there, and 16 kHz comes out
+  as a half-speed ghost;
+- it **paces to realtime** with a small lead, because a voice engine emits
+  faster than realtime and overflowing Teler's buffer produces a periodic
+  burst artifact that is audible on the live leg but **absent from the
+  recording**, so you cannot hear it back;
+- it **grows its frames** (800 ms, doubling to 2.4 s) because Teler inserts
+  roughly a 20 ms pause at each chunk boundary, so fewer boundaries means
+  smoother speech — while a small first frame keeps the first word fast.
+
+All three are tunable per call: `?frameMs=800&steadyMs=2400&leadS=1.2`.
 
 **Vonage** — in your NCCO:
 
