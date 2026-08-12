@@ -12,18 +12,21 @@ PCM16, and — the part everyone gets wrong — flushes the carrier's playback
 buffer the instant the caller interrupts.
 
 ```bash
-git clone https://github.com/dvaarikai/setu && cd setu
-npm install && npm run build
-
 export DVAARIK_API_KEY=dvk_live_...
 export AGENT_PROMPT="You are Riya, the receptionist at Sunrise Dental."
-npm start
+
+npx @dvaarik/setu
 ```
 
 Point your provider's stream at `wss://your-host/twilio` and call the number.
 That is the whole integration.
 
-*(An `npx @dvaarik/setu` release is coming; until then, clone.)*
+Prefer to run it from source, or to change it?
+
+```bash
+git clone https://github.com/dvaarikai/setu && cd setu
+npm install && npm run build && npm start
+```
 
 ---
 

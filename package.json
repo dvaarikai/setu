@@ -13,8 +13,14 @@
   "bin": {
     "setu": "./dist/cli.js"
   },
-  "files": ["dist", "README.md", "LICENSE"],
-  "engines": { "node": ">=20" },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -23,11 +29,26 @@
     "test": "node --test dist/**/*.test.js"
   },
   "keywords": [
-    "voice-ai", "telephony", "twilio", "plivo", "exotel", "vonage", "telnyx",
-    "jambonz", "sip", "media-streams", "websocket", "voice-agent", "ivr",
-    "speech-to-speech", "india"
+    "voice-ai",
+    "telephony",
+    "twilio",
+    "plivo",
+    "exotel",
+    "vonage",
+    "telnyx",
+    "jambonz",
+    "sip",
+    "media-streams",
+    "websocket",
+    "voice-agent",
+    "ivr",
+    "speech-to-speech",
+    "india"
   ],
-  "repository": { "type": "git", "url": "https://github.com/dvaarikai/setu.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dvaarikai/setu.git"
+  },
   "homepage": "https://developers.dvaarik.com",
   "dependencies": {
     "ws": "^8.18.0"
@@ -36,5 +57,8 @@
     "@types/node": "^22.10.0",
     "@types/ws": "^8.5.13",
     "typescript": "^5.7.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
