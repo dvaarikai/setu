@@ -6,9 +6,10 @@ import { plivoAdapter } from "./plivo.js";
 import { rawAdapter } from "./raw.js";
 import { telnyxAdapter } from "./telnyx.js";
 import { twilioAdapter } from "./twilio.js";
+import { vobizAdapter } from "./vobiz.js";
 import { vonageAdapter } from "./vonage.js";
 
-export { exotelAdapter, frejunAdapter, jambonzAdapter, plivoAdapter, rawAdapter, telnyxAdapter, twilioAdapter, vonageAdapter };
+export { exotelAdapter, frejunAdapter, jambonzAdapter, plivoAdapter, rawAdapter, telnyxAdapter, twilioAdapter, vobizAdapter, vonageAdapter };
 
 /** Everything Setu can bridge, keyed by the path segment it listens on. */
 export const PROVIDERS: Record<string, AdapterFactory> = {
@@ -19,6 +20,10 @@ export const PROVIDERS: Record<string, AdapterFactory> = {
   frejun: frejunAdapter,
   teler: frejunAdapter,
   vonage: vonageAdapter,
+  // Vobiz speaks a Plivo-adjacent dialect with its own quirks (top-level
+  // streamId on playback, numeric sampleRate) — a separate adapter, not an
+  // alias, so neither vendor's changes can break the other.
+  vobiz: vobizAdapter,
   telnyx: telnyxAdapter,
   // SignalWire implements Twilio's Media Streams protocol, so the Twilio
   // adapter drives it unchanged.
