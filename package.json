@@ -1,7 +1,7 @@
 {
   "name": "@dvaarik/setu",
   "version": "0.1.0",
-  "description": "Bridge any telephony provider's media stream to an AI voice agent. Twilio, Plivo, Exotel, Vonage, Telnyx, Jambonz and raw SIP.",
+  "description": "Open-source carrier bridge for AI voice agents: Twilio, Plivo, Exotel, FreJun/Teler, Vonage, Telnyx, SignalWire, jambonz and raw PCM.",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -43,7 +43,15 @@
     "voice-agent",
     "ivr",
     "speech-to-speech",
-    "india"
+    "india",
+    "ai-voice-agent",
+    "carrier-bridge",
+    "india-telephony",
+    "frejun",
+    "teler",
+    "signalwire",
+    "pcm16",
+    "barge-in"
   ],
   "repository": {
     "type": "git",
